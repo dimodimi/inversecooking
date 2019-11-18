@@ -173,6 +173,7 @@ def build_vocab_recipe1m(args):
     #####
     # 1. Count words in dataset and clean
     #####
+    nltk.download('punkt')
     if os.path.exists(ingrs_file) and os.path.exists(instrs_file) and not args.forcegen:
         print ("loading pre-extracted word counters")
         counter_ingrs = pickle.load(open(args.save_path + 'allingrs_count.pkl', 'rb'))
@@ -218,7 +219,6 @@ def build_vocab_recipe1m(args):
                 continue
 
             # tokenize sentences and update counter
-            nltk.download('punkt')
             update_counter(instrs_list, counter_toks, istrain=entry['partition'] == 'train')
             title = nltk.tokenize.word_tokenize(entry['title'].lower())
             if entry['partition'] == 'train':
