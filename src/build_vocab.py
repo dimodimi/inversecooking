@@ -218,7 +218,7 @@ def build_vocab_recipe1m(args):
                 continue
 
             # tokenize sentences and update counter
-            ntlk.download('punkt')
+            nltk.download('punkt')
             update_counter(instrs_list, counter_toks, istrain=entry['partition'] == 'train')
             title = nltk.tokenize.word_tokenize(entry['title'].lower())
             if entry['partition'] == 'train':
