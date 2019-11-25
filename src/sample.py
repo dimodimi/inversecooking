@@ -59,12 +59,12 @@ def main(args):
     vars_to_replace = ['greedy', 'recipe_only', 'ingrs_only', 'temperature', 'batch_size', 'maxseqlen',
                        'get_perplexity', 'use_true_ingrs', 'eval_split', 'save_dir', 'aux_data_dir',
                        'recipe1m_dir', 'project_name', 'use_lmdb', 'beam']
-    store_dict = {}
-    for var in vars_to_replace:
-        store_dict[var] = getattr(args, var)
-    args = pickle.load(open(os.path.join(checkpoints_dir, 'args.pkl'), 'rb'))
-    for var in vars_to_replace:
-        setattr(args, var, store_dict[var])
+    #store_dict = {}
+    #for var in vars_to_replace:
+    #    store_dict[var] = getattr(args, var)
+    #args = pickle.load(open(os.path.join(checkpoints_dir, 'args.pkl'), 'rb'))
+    #for var in vars_to_replace:
+    #    setattr(args, var, store_dict[var])
     print (args)
 
     transforms_list = []
