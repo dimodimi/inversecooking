@@ -19,8 +19,11 @@ class Recipe1MDataset(data.Dataset):
     def __init__(self, data_dir, aux_data_dir, split, maxseqlen, maxnuminstrs, maxnumlabels, maxnumims,
                  transform=None, max_num_samples=-1, use_lmdb=False, suff=''):
 
-        self.ingrs_vocab = pickle.load(open(os.path.join(aux_data_dir, suff + 'recipe1m_vocab_ingrs.pkl'), 'rb'))
-        self.instrs_vocab = pickle.load(open(os.path.join(aux_data_dir, suff + 'recipe1m_vocab_toks.pkl'), 'rb'))
+        #Try using the default vocabs
+        self.ingrs_vocab = pickle.load(open(os.path.join(aux_data_dir, suff + 'ingr_vocab.pkl'), 'rb'))
+        self.instrs_vocab = pickle.load(open(os.path.join(aux_data_dir, suff + 'instr_vocab.pkl'), 'rb'))
+        #self.ingrs_vocab = pickle.load(open(os.path.join(aux_data_dir, suff + 'recipe1m_vocab_ingrs.pkl'), 'rb'))
+        #self.instrs_vocab = pickle.load(open(os.path.join(aux_data_dir, suff + 'recipe1m_vocab_toks.pkl'), 'rb'))
         self.dataset = pickle.load(open(os.path.join(aux_data_dir, suff + 'recipe1m_'+split+'.pkl'), 'rb'))
 
         self.label2word = self.get_ingrs_vocab()
